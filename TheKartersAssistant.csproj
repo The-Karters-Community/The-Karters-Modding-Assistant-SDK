@@ -1,0 +1,65 @@
+<Project Sdk="Microsoft.NET.Sdk">
+  <PropertyGroup>
+    <TargetFramework>net6.0</TargetFramework>
+    <AssemblyName>TheKartersAssistant</AssemblyName>
+    <Description></Description>
+    <Version>0.1.0</Version>
+    <Author>Arca</Author>
+    <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
+    <LangVersion>latest</LangVersion>
+    <RestoreAdditionalProjectSources>
+      https://api.nuget.org/v3/index.json;
+      https://nuget.bepinex.dev/v3/index.json;
+      https://nuget.samboy.dev/v3/index.json
+    </RestoreAdditionalProjectSources>
+    <RootNamespace>TheKartersAssistant</RootNamespace>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="BepInEx.Unity.IL2CPP" Version="6.0.0-be.*" IncludeAssets="compile" />
+    <PackageReference Include="BepInEx.PluginInfoProps" Version="2.*" />
+    <PackageReference Include="HarmonyX" Version="2.12.0" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Reference Include="Assembly-CSharp">
+      <HintPath>../_references/interop/Assembly-CSharp.dll</HintPath>
+    </Reference>
+
+    <Reference Include="UnityEngine.CoreModule">
+      <HintPath>../_references/interop/UnityEngine.CoreModule.dll</HintPath>
+    </Reference>
+
+    <Reference Include="Unity.TextMeshPro">
+      <HintPath>../_references/interop/Unity.TextMeshPro.dll</HintPath>
+    </Reference>
+
+    <Reference Include="Il2Cppmscorlib">
+      <HintPath>../_references/interop/Il2Cppmscorlib.dll</HintPath>
+    </Reference>
+
+    <Reference Include="Il2CppSystem">
+      <HintPath>../_references/interop/Il2CppSystem.dll</HintPath>
+    </Reference>
+
+    <Reference Include="Rewired_Core">
+      <HintPath>../_references/interop/Rewired_Core.dll</HintPath>
+    </Reference>
+
+    <Reference Include="AutoReloadConfigModSDK">
+      <HintPath>../_references/mods/AutoReloadConfigModSDK.dll</HintPath>
+    </Reference>
+
+    <Reference Include="SharpDX">
+      <HintPath>../_references/SharpDX.dll</HintPath>
+    </Reference>
+
+    <Reference Include="SharpDX.DXGI">
+      <HintPath>../_references/SharpDX.DXGI.dll</HintPath>
+    </Reference>
+
+    <Reference Include="SharpDX.Direct2D1">
+      <HintPath>../_references/SharpDX.Direct2D1.dll</HintPath>
+    </Reference>
+  </ItemGroup>
+</Project>
