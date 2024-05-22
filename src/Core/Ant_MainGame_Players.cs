@@ -1,5 +1,6 @@
 using System.Collections.Generic;
 using HarmonyLib;
+using TheKartersModdingAssistant.Event;
 
 namespace TheKartersModdingAssistant.Core;
 
@@ -14,5 +15,16 @@ public class Ant_MainGame_Players__Start {
         }
 
         Player.players = players;
+    }
+}
+
+[HarmonyPatch(typeof(Ant_MainGame_Players), nameof(Ant_MainGame_Players.ResetAndPreparePlayersToRace))]
+public class Ant_MainGame_Players__ResetAndPreparePlayersToRace {
+    public static void Postfix(Ant_MainGame_Players __instance) {
+        GameEvent.onRaceInitialize?.Invoke();
+
+        foreach (Player player in Player.GetActivePlayers()) {
+            PlayerEvent.onRaceInitialize?.Invoke(player);
+        }
     }
 }
