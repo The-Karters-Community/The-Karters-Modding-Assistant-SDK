@@ -1,8 +1,8 @@
 using System;
 using HarmonyLib;
-using TheKartersAssistant.Event;
+using TheKartersModdingAssistant.Event;
 
-namespace TheKartersAssistant.Core;
+namespace TheKartersModdingAssistant.Core;
 
 [HarmonyPatch(typeof(Ant_MainGame), nameof(Ant_MainGame.Start))]
 public class Ant_MainGame__Start {

@@ -1,6 +1,6 @@
 using BepInEx.Logging;
 
-namespace TheKartersAssistant;
+namespace TheKartersModdingAssistant;
 
 public class Logger {
     protected ManualLogSource UnityLogger;

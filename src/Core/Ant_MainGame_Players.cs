@@ -1,7 +1,7 @@
 using System.Collections.Generic;
 using HarmonyLib;
 
-namespace TheKartersAssistant.Core;
+namespace TheKartersModdingAssistant.Core;
 
 [HarmonyPatch(typeof(Ant_MainGame_Players), nameof(Ant_MainGame_Players.Start))]
 public class Ant_MainGame_Players__Start {

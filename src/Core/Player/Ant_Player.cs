@@ -1,7 +1,7 @@
 using HarmonyLib;
-using TheKartersAssistant.Event;
+using TheKartersModdingAssistant.Event;
 
-namespace TheKartersAssistant.Core;
+namespace TheKartersModdingAssistant.Core;
 
 [HarmonyPatch(typeof(Ant_Player), nameof(Ant_Player.Update))]
 public class Ant_Player__Update {

@@ -1,4 +1,4 @@
-namespace TheKartersAssistant;
+namespace TheKartersModdingAssistant;
 
 public enum Item {
     BAZOOKA = PixelWeaponObject.EWeaponType.BAZOOKA_00,

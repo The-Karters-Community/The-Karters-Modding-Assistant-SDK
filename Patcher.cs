@@ -1,4 +1,4 @@
-namespace TheKartersAssistant;
+namespace TheKartersModdingAssistant;
 
 public class Patcher {
     /// <summary>

@@ -2,7 +2,7 @@ using BepInEx.Configuration;
 using BepInEx.Unity.IL2CPP;
 using HarmonyLib;
 
-namespace TheKartersAssistant;
+namespace TheKartersModdingAssistant;
 
 abstract public class AbstractPlugin : BasePlugin {
     public string pluginGuid;

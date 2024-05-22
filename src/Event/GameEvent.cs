@@ -1,6 +1,6 @@
 using System;
 
-namespace TheKartersAssistant.Event;
+namespace TheKartersModdingAssistant.Event;
 
 public class GameEvent {
     // Ant_CurrentGameConfiguration::Start

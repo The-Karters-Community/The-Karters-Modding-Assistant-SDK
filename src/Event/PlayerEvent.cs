@@ -1,6 +1,6 @@
 using System;
 
-namespace TheKartersAssistant.Event;
+namespace TheKartersModdingAssistant.Event;
 
 public class PlayerEvent {
      // Ant_Player::Update
