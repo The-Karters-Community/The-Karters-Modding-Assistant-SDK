@@ -4,7 +4,7 @@ This SDK has for purpose to speed up the mod making process for the game [The Ka
 
 ## Releases
 
-- **v0.1.0**: _soon_
+Please check the [release page](https://github.com/iArcadia/TheKartersAssistant/releases) to find the lastest releases.
 
 ## Installation
 
@@ -14,11 +14,11 @@ Download and open the `.zip` archive to find a `TheKartersAssistant.dll` file. U
 
 You can test the current development of the SDK before it releases by building it yourself.
 
-- Clone the repository on your local environment: `git clone xxx`
+- Clone the repository on your local environment: `git clone https://github.com/iArcadia/TheKartersAssistant.git`
 - Move to the new directory: `cd TheKartersAssistant`
 - Build the project with .NET: `dotnet build`
 
-Then, the `TheKartersAssistant.dll` file will be generated in `/bin/Debug/net6.0/`. You can now copy and paste it to the game directory, see the [Installation section](#installation).
+Then if you want to test, the `TheKartersAssistant.dll` file will be generated in `/bin/Debug/net6.0/`. You can now copy and paste it to the game directory, see the [installation section](#installation).
 
 ## Documentation
 
