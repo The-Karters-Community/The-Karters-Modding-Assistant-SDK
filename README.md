@@ -19,3 +19,7 @@ You can test the current development of the SDK before it releases by building i
 - Build the project with .NET: `dotnet build`
 
 Then, the `TheKartersAssistant.dll` file will be generated in `/bin/Debug/net6.0/`. You can now copy and paste it to the game directory, see the [Installation section](#installation).
+
+## Documentation
+
+Please read the [documentation](/doc/index.md) to learn how to use it and start building beautiful mods. ❤
