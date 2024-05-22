@@ -835,4 +835,18 @@ public class Player {
 
         return this.SetCustomData(customData);
     }
+
+    /// <summary>
+    /// Unset the value associated to the given key.
+    /// </summary>
+    /// *
+    /// <param name="key">string</param>
+    /// <returns>Player</returns>
+    public Player Unset(string key) {
+        Dictionary<string, object> customData = this.GetCustomData();
+
+        customData.Remove(key);
+
+        return this.SetCustomData(customData);
+    }
 }
