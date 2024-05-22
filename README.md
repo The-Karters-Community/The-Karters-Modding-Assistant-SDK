@@ -1,6 +1,6 @@
 # The Karters Assistant SDK
 
-This SDK has for purpose to speed up the mod making process for the game [The Karters 2: Turbo-Charged](https://store.steampowered.com/app/2269950/The_Karters_2_Turbo_Charged/) by bringing on the table useful wrappers and actions.
+This SDK has for purpose to speed up the mod making process for the _Prologue_ verison of the game [The Karters 2: Turbo-Charged](https://store.steampowered.com/app/2506950/The_Karters_2_Turbo_Charged__Prologue/) by bringing on the table useful wrappers and actions.
 
 ## Releases
 
