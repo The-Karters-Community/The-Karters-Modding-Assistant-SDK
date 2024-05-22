@@ -1,5 +1,25 @@
 # The Karters Assistant SDK Documentation
 
+## Introduction
+
+After downloading one of the [release](https://github.com/iArcadia/TheKartersAssistant/releases), uncompress it where you want in your machine.
+
+For your IDE to index all the classes and methods of the SDK, you will need to add it to your `XXX.csproj` file:
+
+```xml
+<Project Sdk="Microsoft.NET.Sdk">
+    [...]
+
+    <ItemGroup>
+        <Reference Include="TheKartersAssistant">
+            <HintPath>./your/path/to/TheKartersAssistant.dll</HintPath>
+        </Reference>
+    </ItemGroup>
+
+    [...]
+</Project>
+```
+
 ## Actions and their usage
 
 When playing the game, a lot of things happens: a race will start, a player will jump and then start drifting, etc.
