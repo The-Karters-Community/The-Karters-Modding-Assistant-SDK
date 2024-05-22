@@ -1,7 +1,7 @@
 using HarmonyLib;
-using TheKartersAssistant.Event;
+using TheKartersModdingAssistant.Event;
 
-namespace TheKartersAssistant.Core;
+namespace TheKartersModdingAssistant.Core;
 
 /*[HarmonyPatch(typeof(Ant_BoostManager), nameof(Ant_BoostManager.FixedUpdate))]
 public class Ant_BoostManager__FixedUpdate {

@@ -1,8 +1,8 @@
-# The Karters Assistant SDK Documentation
+# The Karters Modding Assistant SDK Documentation
 
 ## Introduction
 
-After downloading one of the [release](https://github.com/iArcadia/TheKartersAssistant/releases), uncompress it where you want in your machine.
+After downloading one of the [release](https://github.com/The-Karters-Community/The-Karters-Modding-Assistant-SDK/releases), uncompress it where you want in your machine.
 
 For your IDE to index all the classes and methods of the SDK, you will need to add it to your `XXX.csproj` file:
 
@@ -11,8 +11,8 @@ For your IDE to index all the classes and methods of the SDK, you will need to a
     [...]
 
     <ItemGroup>
-        <Reference Include="TheKartersAssistant">
-            <HintPath>./your/path/to/TheKartersAssistant.dll</HintPath>
+        <Reference Include="TheKartersModdingAssistant">
+            <HintPath>./your/path/to/TheKartersModdingAssistant.dll</HintPath>
         </Reference>
     </ItemGroup>
 

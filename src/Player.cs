@@ -1,6 +1,6 @@
 using System.Collections.Generic;
 
-namespace TheKartersAssistant;
+namespace TheKartersModdingAssistant;
 
 public class Player {
     public static List<Player> players;

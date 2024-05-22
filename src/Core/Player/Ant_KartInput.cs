@@ -1,8 +1,8 @@
 using HarmonyLib;
-using TheKartersAssistant.Event;
-using TheKartersAssistant.RewiredInput;
+using TheKartersModdingAssistant.Event;
+using TheKartersModdingAssistant.RewiredInput;
 
-namespace TheKartersAssistant.Core;
+namespace TheKartersModdingAssistant.Core;
 
 [HarmonyPatch(typeof(Ant_KartInput), nameof(Ant_KartInput.ProcessRacingInput))]
 public class Ant_KartInput__ProcessRacingInput {

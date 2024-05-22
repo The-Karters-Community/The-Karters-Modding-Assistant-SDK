@@ -1,9 +1,9 @@
 <Project Sdk="Microsoft.NET.Sdk">
   <PropertyGroup>
     <TargetFramework>net6.0</TargetFramework>
-    <AssemblyName>TheKartersAssistant</AssemblyName>
-    <Description></Description>
-    <Version>0.1.1</Version>
+    <AssemblyName>TheKartersModdingAssistant</AssemblyName>
+    <Description>This SDK has for purpose to speed up the mod making process.</Description>
+    <Version>0.1.2</Version>
     <Author>Arca</Author>
     <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
     <LangVersion>latest</LangVersion>
@@ -12,7 +12,7 @@
       https://nuget.bepinex.dev/v3/index.json;
       https://nuget.samboy.dev/v3/index.json
     </RestoreAdditionalProjectSources>
-    <RootNamespace>TheKartersAssistant</RootNamespace>
+    <RootNamespace>TheKartersModdingAssistant</RootNamespace>
   </PropertyGroup>
 
   <ItemGroup>
