@@ -804,7 +804,11 @@ public class Player {
     /// <param name="defaultValue">object</param>
     /// <returns>object</returns>
     public object Get(string key, object defaultValue) {
-        return this.GetCustomData()[key] ?? defaultValue;
+        if (!this.Has(key)) {
+            return defaultValue;
+        }
+
+        return this.GetCustomData()[key];
     }
 
     /// <summary>
