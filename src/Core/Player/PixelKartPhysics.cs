@@ -1,7 +1,7 @@
 using HarmonyLib;
-using TheKartersAssistant.Event;
+using TheKartersModdingAssistant.Event;
 
-namespace TheKartersAssistant.Core;
+namespace TheKartersModdingAssistant.Core;
 
 [HarmonyPatch(typeof(PixelKartPhysics), nameof(PixelKartPhysics.FixedUpdate))]
 public class PixelKartPhysics__FixedUpdate {

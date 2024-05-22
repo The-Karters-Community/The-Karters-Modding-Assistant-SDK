@@ -1,4 +1,4 @@
-namespace TheKartersAssistant;
+namespace TheKartersModdingAssistant;
 
 public class ConfigCategory {
     public static readonly string General = "1 - General";

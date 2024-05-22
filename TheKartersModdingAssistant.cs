@@ -1,16 +1,16 @@
 ﻿using BepInEx;
 using TheKarters2Mods;
-using TheKartersAssistant.Core;
+using TheKartersModdingAssistant.Core;
 
-namespace TheKartersAssistant;
+namespace TheKartersModdingAssistant;
 
 [BepInPlugin(MyPluginInfo.PLUGIN_GUID, MyPluginInfo.PLUGIN_NAME, MyPluginInfo.PLUGIN_VERSION)]
 [BepInDependency(AutoReloadConfigModSDK_BepInExInfo.PLUGIN_GUID)]
-public class TheKartersAssistant : AbstractPlugin {
+public class TheKartersModdingAssistant : AbstractPlugin {
     /// <summary>
-    /// TheKartersAssistant constructor.
+    /// TheKartersModdingAssistant constructor.
     /// </summary>
-    public TheKartersAssistant(): base() {
+    public TheKartersModdingAssistant(): base() {
         this.pluginGuid = MyPluginInfo.PLUGIN_GUID;
         this.pluginName = MyPluginInfo.PLUGIN_NAME;
         this.pluginVersion = MyPluginInfo.PLUGIN_VERSION;

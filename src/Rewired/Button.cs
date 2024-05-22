@@ -1,4 +1,4 @@
-namespace TheKartersAssistant.RewiredInput;
+namespace TheKartersModdingAssistant.RewiredInput;
 
 class Button {
     /*

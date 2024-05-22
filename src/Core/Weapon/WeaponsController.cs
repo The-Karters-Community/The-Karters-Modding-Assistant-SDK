@@ -1,7 +1,7 @@
 using HarmonyLib;
-using TheKartersAssistant.Event;
+using TheKartersModdingAssistant.Event;
 
-namespace TheKartersAssistant.Core;
+namespace TheKartersModdingAssistant.Core;
 
 [HarmonyPatch(typeof(WeaponsController), nameof(WeaponsController.WeaponBoxReward_AddWeapon))]
 public class WeaponsController__WeaponBoxReward_AddWeapon {
