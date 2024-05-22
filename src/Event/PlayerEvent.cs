@@ -8,8 +8,8 @@ public class PlayerEvent {
     public static Action<Player> onUpdateAfter;
 
     // Ant_BoostManager::FireSliderBoost
-    public static Action<Player, int> onBoost;
-    public static Action<Player, int> onBoostAfter;
+    public static Action<Player> onBoost;
+    public static Action<Player> onBoostAfter;
 
     // Ant_BoostManager::WallCollisionOccuredInTimeFromLastOne
     public static Action<Player> onWallHit;
@@ -20,8 +20,8 @@ public class PlayerEvent {
     public static Action<Player, float, float> onPadEnterAfter;
 
     // Ant_BoostManager::OnKartLandedAfterPlayerTriggeredJump
-    public static Action<Player, float, bool> onLand;
-    public static Action<Player, float, bool> onLandAfter;
+    public static Action<Player, bool> onLand;
+    public static Action<Player, bool> onLandAfter;
 
     // PixelKartPhysics::JumpInputTheKarters
     public static Action<Player> onJump;
@@ -36,7 +36,10 @@ public class PlayerEvent {
     public static Action<Player> onDriftAfter;
     public static Action<Player> onNewLap;
 
+    // Ant_MainGame::StartAndInitializeRace_Coroutine
     public static Action<Player> onRaceInitialize;
+
+    // Ant_MainGame::Start
     public static Action<Player> onRaceStart;
 
     // WeaponsController::WeaponBoxReward_AddWeapon

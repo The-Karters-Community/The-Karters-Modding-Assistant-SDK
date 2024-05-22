@@ -16,14 +16,14 @@ public class Ant_BoostManager__FixedUpdate {
 
 [HarmonyPatch(typeof(Ant_BoostManager), nameof(Ant_BoostManager.FireSliderBoost))]
 public class Ant_BoostManager__FireSliderBoost {
-    public static void Prefix(Ant_BoostManager __instance, ref int iBoostNumberIndex) {
-        PlayerEvent.onBoost?.Invoke(Player.FindByAntPlayer(__instance.kartController.parentPlayer), iBoostNumberIndex + 1);
+    public static void Prefix(Ant_BoostManager __instance) {
+        PlayerEvent.onBoost?.Invoke(Player.FindByAntPlayer(__instance.kartController.parentPlayer));
     }
 
-    public static void Postfix(Ant_BoostManager __instance, int iBoostNumberIndex) {
+    public static void Postfix(Ant_BoostManager __instance) {
         Player player = Player.FindByAntPlayer(__instance.kartController.parentPlayer);
 
-        PlayerEvent.onBoostAfter?.Invoke(player, iBoostNumberIndex + 1);
+        PlayerEvent.onBoostAfter?.Invoke(player);
 
         player.IncreaseCurrentBoostNumber();
     }
@@ -53,11 +53,11 @@ public class Ant_BoostManager__BoostPadTriggerEnter {
 
 [HarmonyPatch(typeof(Ant_BoostManager), nameof(Ant_BoostManager.OnKartLandedAfterPlayerTriggeredJump))]
 public class Ant_BoostManager__OnKartLandedAfterPlayerTriggeredJump {
-    public static void Prefix(Ant_BoostManager __instance, ref float fTimeInAir, ref bool bIsPlayerMadeTrickBeforeLanding) {
-        PlayerEvent.onLand?.Invoke(Player.FindByAntPlayer(__instance.kartController.parentPlayer), fTimeInAir, bIsPlayerMadeTrickBeforeLanding);
+    public static void Prefix(Ant_BoostManager __instance, ref bool bIsPlayerMadeTrickBeforeLanding) {
+        PlayerEvent.onLand?.Invoke(Player.FindByAntPlayer(__instance.kartController.parentPlayer), bIsPlayerMadeTrickBeforeLanding);
     }
 
-    public static void Postfix(Ant_BoostManager __instance, float fTimeInAir, bool bIsPlayerMadeTrickBeforeLanding) {
-        PlayerEvent.onLandAfter?.Invoke(Player.FindByAntPlayer(__instance.kartController.parentPlayer), fTimeInAir, bIsPlayerMadeTrickBeforeLanding);
+    public static void Postfix(Ant_BoostManager __instance, bool bIsPlayerMadeTrickBeforeLanding) {
+        PlayerEvent.onLandAfter?.Invoke(Player.FindByAntPlayer(__instance.kartController.parentPlayer), bIsPlayerMadeTrickBeforeLanding);
     }
 }
