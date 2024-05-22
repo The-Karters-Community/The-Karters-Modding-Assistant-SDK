@@ -3,7 +3,7 @@
     <TargetFramework>net6.0</TargetFramework>
     <AssemblyName>TheKartersAssistant</AssemblyName>
     <Description></Description>
-    <Version>0.1.0</Version>
+    <Version>0.1.1</Version>
     <Author>Arca</Author>
     <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
     <LangVersion>latest</LangVersion>
@@ -46,7 +46,7 @@
       <HintPath>../_references/interop/Rewired_Core.dll</HintPath>
     </Reference>
 
-    <Reference Include="AutoReloadConfigModSDK">
+    <Reference Include="AutoReloadConfigModSdk">
       <HintPath>../_references/mods/AutoReloadConfigModSDK.dll</HintPath>
     </Reference>
 

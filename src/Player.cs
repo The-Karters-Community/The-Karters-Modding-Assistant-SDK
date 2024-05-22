@@ -20,13 +20,9 @@ public class Player {
     public PTK_WeaponsAndAmunitionManager uPtkWeaponsAndAmunitionManager;
 
     // CUSTOM
-    protected Dictionary<string, object> customData = new();
+    protected Dictionary<string, object> custom = new();
     protected int currentBoostNumber = 1;
     protected int previousLapCount = 1;
-
-    /*public float fireReserve = 0;
-    public FireTiers fireTiers = FireTiers.NO_FIRE;
-    public int amountOfConsecutivePads = 0;*/
 
     /// <summary>
     /// Get all players.
@@ -687,18 +683,18 @@ public class Player {
     /// </summary>
     /// 
     /// <returns>PixelWeaponObject.EWeaponType</returns>
-    public PixelWeaponObject.EWeaponType GetSecondaryWeaponType() {
+    /*public PixelWeaponObject.EWeaponType GetSecondaryWeaponType() {
         return this.uWeaponsController.itemFromBoxNr_2;
-    }
+    }*/
 
     /// <summary>
     /// Get the secondary weapon amount of ammunitions.
     /// </summary>
     /// 
     /// <returns>int</returns>
-    public int GetSecondaryWeaponAmmo() {
+    /*public int GetSecondaryWeaponAmmo() {
         return this.uPtkWeaponsAndAmunitionManager.GetCurrentAmmoCount(this.GetSecondaryWeaponType());
-    }
+    }*/
 
     /// <summary>
     /// Set the type of the secondary weapon.
@@ -706,13 +702,13 @@ public class Player {
     /// 
     /// <param name="mainWeaponType">PixelWeaponObject.EWeaponType</param>
     /// <returns>Player</returns>
-    public Player SetSecondaryWeaponType(PixelWeaponObject.EWeaponType mainWeaponType) {
+    /*public Player SetSecondaryWeaponType(PixelWeaponObject.EWeaponType mainWeaponType) {
         this.SetSecondaryWeaponAmmo(0);
         this.uWeaponsController.itemFromBoxNr_2 = mainWeaponType;
         this.SetSecondaryWeaponAmmo(1);
 
         return this;
-    }
+    }*/
 
     /// <summary>
     /// Set the amount of ammunition of the secondary weapon.
@@ -720,7 +716,7 @@ public class Player {
     /// 
     /// <param name="secondaryWeaponAmmo">int</param>
     /// <returns>Player</returns>
-    public Player SetSecondaryWeaponAmmo(int secondaryWeaponAmmo) {
+    /*public Player SetSecondaryWeaponAmmo(int secondaryWeaponAmmo) {
         PixelWeaponObject.EWeaponType secondaryWeaponType = this.GetSecondaryWeaponType();
 
         if (secondaryWeaponType == PixelWeaponObject.EWeaponType.__DISABLED || secondaryWeaponType == PixelWeaponObject.EWeaponType.__WEAPONS_COUNT) {
@@ -730,7 +726,7 @@ public class Player {
         this.uPtkWeaponsAndAmunitionManager.dWeaponToAmmoCountDictionary[(int)secondaryWeaponType] = secondaryWeaponAmmo;
 
         return this;
-    }
+    }*/
 
     /// <summary>
     /// Increase the amount of ammunition of the secondary weapon.
@@ -738,9 +734,9 @@ public class Player {
     /// 
     /// <param name="ammo">int</param>
     /// <returns>Player</returns>
-    public Player IncreaseSecondaryWeaponAmmo(int ammo = 1) {
+    /*public Player IncreaseSecondaryWeaponAmmo(int ammo = 1) {
         return this.SetSecondaryWeaponAmmo(this.GetSecondaryWeaponAmmo() + ammo);
-    }
+    }*/
 
     /// <summary>
     /// Set the secondary weapon.
@@ -749,9 +745,9 @@ public class Player {
     /// <param name="secondaryWeaponType">PixelWeaponObject.EWeaponType</param>
     /// <param name="secondaryWeaponAmmo">int</param>
     /// <returns>Player</returns>
-    public Player SetSecondaryWeapon(PixelWeaponObject.EWeaponType secondaryWeaponType, int secondaryWeaponAmmo = 1) {
+    /*public Player SetSecondaryWeapon(PixelWeaponObject.EWeaponType secondaryWeaponType, int secondaryWeaponAmmo = 1) {
         return this.SetSecondaryWeaponType(secondaryWeaponType).SetSecondaryWeaponAmmo(secondaryWeaponAmmo);
-    }
+    }*/
 
     /// <summary>
     /// Set the two weapons.
@@ -762,12 +758,12 @@ public class Player {
     /// <param name="secondaryWeaponType">PixelWeaponObject.EWeaponType</param>
     /// <param name="secondaryWeaponAmmo">int</param>
     /// <returns>Player</returns>
-    public Player SetWeapons(PixelWeaponObject.EWeaponType mainWeaponType, PixelWeaponObject.EWeaponType secondaryWeaponType, int mainWeaponAmmo = 1, int secondaryWeaponAmmo = 1) {
+    /*public Player SetWeapons(PixelWeaponObject.EWeaponType mainWeaponType, PixelWeaponObject.EWeaponType secondaryWeaponType, int mainWeaponAmmo = 1, int secondaryWeaponAmmo = 1) {
         this.SetMainWeapon(mainWeaponType, mainWeaponAmmo);
         this.SetSecondaryWeapon(secondaryWeaponType, secondaryWeaponAmmo);
         
         return this;
-    }
+    }*/
 
     /*public Player SwitchWeapons() {
         PixelWeaponObject.EWeaponType mainWeaponType = this.GetMainWeaponType();
@@ -779,38 +775,60 @@ public class Player {
         return this.SetWeapons(secondaryWeaponType, mainWeaponType, secondaryWeaponAmmo, mainWeaponAmmo);
     }*/
 
+    /// <summary>
+    /// Get all custom data.
+    /// </summary>
+    /// 
+    /// <returns>Dictionary<string, object></returns>
     public Dictionary<string, object> GetCustomData() {
-        return this.customData;
+        return this.custom;
     }
 
-    public Player SetCustomData(Dictionary<string, object> customData) {
-        this.customData = customData;
+    /// <summary>
+    /// Set custom data.
+    /// </summary>
+    /// 
+    /// <param name="custom">Dictionary<string, object></param>
+    /// <returns>Player</returns>
+    public Player SetCustomData(Dictionary<string, object> custom) {
+        this.custom = custom;
         
         return this;
     }
 
-    public object Get(string key) {
-        return this.GetCustomData()[key];
+    /// <summary>
+    /// Get the value associated to the given key, or the default value if none.
+    /// </summary>
+    /// 
+    /// <param name="key">string</param>
+    /// <param name="defaultValue">object</param>
+    /// <returns>object</returns>
+    public object Get(string key, object defaultValue) {
+        return this.GetCustomData()[key] ?? defaultValue;
     }
 
+    /// <summary>
+    /// Tell whether a value associated to the given key exists.
+    /// </summary>
+    /// 
+    /// <param name="key">string</param>
+    /// <returns>bool</returns>
     public bool Has(string key) {
         return this.GetCustomData().ContainsKey(key);
     }
 
+    /// <summary>
+    /// Set the value associated to the given key
+    /// </summary>
+    /// 
+    /// <param name="key">string</param>
+    /// <param name="value">object</param>
+    /// <returns>Player</returns>
     public Player Set(string key, object value) {
         Dictionary<string, object> customData = this.GetCustomData();
 
         customData[key] = value;
 
         return this.SetCustomData(customData);
-    }
-
-    /// <summary>
-    /// Log information related to the player.
-    /// </summary>
-    /// 
-    /// <param name="Content">object</param>
-    public void Log(object Content) {
-        Logger.Log($"[{this.GetName()}] {Content}");
     }
 }

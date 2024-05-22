@@ -1,59 +1,51 @@
 ﻿using BepInEx;
-using BepInEx.Configuration;
-using BepInEx.Unity.IL2CPP;
-using TkaConfig = TheKartersAssistant.Config;
+using TheKarters2Mods;
+using TheKartersAssistant.Core;
 
 namespace TheKartersAssistant;
 
 [BepInPlugin(MyPluginInfo.PLUGIN_GUID, MyPluginInfo.PLUGIN_NAME, MyPluginInfo.PLUGIN_VERSION)]
-public class TheKartersAssistant : BasePlugin {
-    public static TheKartersAssistant Instance;
+[BepInDependency(AutoReloadConfigModSDK_BepInExInfo.PLUGIN_GUID)]
+public class TheKartersAssistant : AbstractPlugin {
+    /// <summary>
+    /// TheKartersAssistant constructor.
+    /// </summary>
+    public TheKartersAssistant(): base() {
+        this.pluginGuid = MyPluginInfo.PLUGIN_GUID;
+        this.pluginName = MyPluginInfo.PLUGIN_NAME;
+        this.pluginVersion = MyPluginInfo.PLUGIN_VERSION;
 
-    public TkaConfig config;
-    public TkaConfig defaultConfig;
-
-    public TheKartersAssistant() {
-        this.config = new TkaConfig();
-        this.defaultConfig = new TkaConfig();
+        this.harmony = new(this.pluginGuid);
+        this.logger = new(this.Log);
     }
 
-    public override void Load() {
-        Logger.Initialize(this.Log);
-        Logger.Info($"{MyPluginInfo.PLUGIN_NAME} v{MyPluginInfo.PLUGIN_VERSION} has been loaded.", true);
+    /// <summary>
+    /// Patch all the methods with Harmony.
+    /// </summary>
+    public override void ProcessPatching() {
+        this.harmony.PatchAll(typeof(Ant_BoostManager__BoostPadTriggerEnter));
+        this.harmony.PatchAll(typeof(Ant_BoostManager__FireSliderBoost));
+        this.harmony.PatchAll(typeof(Ant_BoostManager__OnKartLandedAfterPlayerTriggeredJump));
+        this.harmony.PatchAll(typeof(Ant_BoostManager__WallCollisionOccuredInTimeFromLastOne));
 
-        TheKartersAssistant.Instance = this;
+        this.harmony.PatchAll(typeof(Ant_CurrentGameConfiguration__Start));
 
-        this.BindFromConfig();
+        this.harmony.PatchAll(typeof(Ant_MainGame__Start));
+        this.harmony.PatchAll(typeof(Ant_MainGame__FixedUpdate));
+        this.harmony.PatchAll(typeof(Ant_MainGame__GetGameModeRequiredLapCount));
+        this.harmony.PatchAll(typeof(Ant_MainGame__StartAndInitializeRace_Coroutine));
 
-        if (this.config.IsDebugModeEnabled()) {
-            Logger.Enable();
-        }
+        this.harmony.PatchAll(typeof(Ant_MainGame_Players__Start));
 
-        Logger.Info($"The debug mode of {MyPluginInfo.PLUGIN_NAME} has been enabled.");
+        this.harmony.PatchAll(typeof(Ant_Player__Update));
 
-        Patcher.Patch(this);
-    }
+        this.harmony.PatchAll(typeof(PixelKartPhysics__FixedUpdate));
+        this.harmony.PatchAll(typeof(PixelKartPhysics__JumpInputTheKarters));
 
-    public override bool Unload() {
-        Logger.Info($"{MyPluginInfo.PLUGIN_NAME} v{MyPluginInfo.PLUGIN_VERSION} has been unloaded.", true);
-        Patcher.Unpatch(this);
+        this.harmony.PatchAll(typeof(WeaponsController__WeaponBoxReward_AddWeapon));
+        this.harmony.PatchAll(typeof(WeaponsController__PickupCurrentlySelectedWeapon));
+        this.harmony.PatchAll(typeof(WeaponsController__Shoot));
 
-        return true;
-    }
-
-    public void BindFromConfig() {
-        this.BindGeneralConfig();
-    }
-
-    protected void BindGeneralConfig() {
-       ConfigEntry<bool> isDebugModeEnabled = Config.Bind(
-            ConfigCategory.General,
-            "isDebugModeEnabled",
-            false,
-            "Whether the debug mode is enabled."
-        );
-
-        this.config.IsDebugModeEnabled(isDebugModeEnabled.Value);
-        this.defaultConfig.IsDebugModeEnabled((bool)isDebugModeEnabled.DefaultValue);
+        this.harmony.PatchAll(typeof(Ant_KartInput__ProcessRacingInput));
     }
 }
