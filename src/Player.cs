@@ -804,7 +804,11 @@ public class Player {
     /// <param name="defaultValue">object</param>
     /// <returns>object</returns>
     public object Get(string key, object defaultValue) {
-        return this.GetCustomData()[key] ?? defaultValue;
+        if (!this.Has(key)) {
+            return defaultValue;
+        }
+
+        return this.GetCustomData()[key];
     }
 
     /// <summary>
@@ -828,6 +832,20 @@ public class Player {
         Dictionary<string, object> customData = this.GetCustomData();
 
         customData[key] = value;
+
+        return this.SetCustomData(customData);
+    }
+
+    /// <summary>
+    /// Unset the value associated to the given key.
+    /// </summary>
+    /// *
+    /// <param name="key">string</param>
+    /// <returns>Player</returns>
+    public Player Unset(string key) {
+        Dictionary<string, object> customData = this.GetCustomData();
+
+        customData.Remove(key);
 
         return this.SetCustomData(customData);
     }

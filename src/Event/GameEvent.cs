@@ -6,7 +6,7 @@ public class GameEvent {
     // Ant_CurrentGameConfiguration::Start
     public static Action onGameStart;
 
-    // Ant_MainGame::StartAndInitializeRace_Coroutine
+    // Ant_MainGame_Players::ResetAndPreparePlayersToRace
     public static Action onRaceInitialize;
 
     // Ant_MainGame::FixedUpdate

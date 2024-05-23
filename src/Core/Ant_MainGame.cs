@@ -39,14 +39,3 @@ public class Ant_MainGame__GetGameModeRequiredLapCount {
         __result = Game.Get().GetAmountOfLaps();
     }
 }
-
-[HarmonyPatch(typeof(Ant_MainGame), nameof(Ant_MainGame.StartAndInitializeRace_Coroutine))]
-public class Ant_MainGame__StartAndInitializeRace_Coroutine {
-    public static void Postfix() {
-        GameEvent.onRaceInitialize?.Invoke();
-
-        foreach (Player player in Player.GetActivePlayers()) {
-                PlayerEvent.onRaceInitialize?.Invoke(player);
-            }
-    }
-}
