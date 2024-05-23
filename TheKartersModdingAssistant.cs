@@ -33,9 +33,9 @@ public class TheKartersModdingAssistant : AbstractPlugin {
         this.harmony.PatchAll(typeof(Ant_MainGame__Start));
         this.harmony.PatchAll(typeof(Ant_MainGame__FixedUpdate));
         this.harmony.PatchAll(typeof(Ant_MainGame__GetGameModeRequiredLapCount));
-        this.harmony.PatchAll(typeof(Ant_MainGame__StartAndInitializeRace_Coroutine));
 
         this.harmony.PatchAll(typeof(Ant_MainGame_Players__Start));
+        this.harmony.PatchAll(typeof(Ant_MainGame_Players__ResetAndPreparePlayersToRace));
 
         this.harmony.PatchAll(typeof(Ant_Player__Update));
 
