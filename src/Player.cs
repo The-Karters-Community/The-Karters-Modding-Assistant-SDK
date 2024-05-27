@@ -307,6 +307,44 @@ public class Player {
     }
 
     /// <summary>
+    /// Damage the player.
+    /// </summary>
+    /// 
+    /// <param name="damages">int</param>
+    /// <param name="authorOfDamages">Player</param>
+    /// <param name="hitByItem">Item</param>
+    /// <param name="allowDeath">bool</param>
+    /// <returns></returns>
+    public Player Damage(int damages, Player authorOfDamages = null, Item hitByItem = Item.NONE, bool allowDeath = true) {
+        if (authorOfDamages is null) {
+            authorOfDamages = this;
+        }
+
+        if (!allowDeath && damages >= this.GetCurrentHealth()) {
+            damages = this.GetCurrentHealth() - 1;
+
+            if (damages <= 0) {
+                return this;
+            }
+        }
+
+        this.uHpBarController.Hit(damages, (int)authorOfDamages.GetIndex(), ItemExt.ToWeaponType(hitByItem));
+
+        return this;
+    }
+
+    /// <summary>
+    /// Damage the player to death.
+    /// </summary>
+    /// 
+    /// <param name="authorOfKill">Player</param>
+    /// <param name="killedByItem">Item</param>
+    /// <returns>Player</returns>
+    public Player Kill(Player authorOfKill = null, Item killedByItem = Item.NONE) {
+        return this.Damage(this.GetCurrentHealth(), authorOfKill, killedByItem);
+    }
+
+    /// <summary>
     /// Get maximum health points.
     /// </summary>
     /// 
