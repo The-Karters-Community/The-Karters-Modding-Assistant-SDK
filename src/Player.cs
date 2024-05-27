@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.Runtime.CompilerServices;
 using BepInEx.Unity.IL2CPP.Utils.Collections;
 using UnityEngine;
 
@@ -68,6 +69,12 @@ public class Player {
         return players;
     }
 
+    /// <summary>
+    /// Find a player by its index.
+    /// </summary>
+    /// 
+    /// <param name="index">Ant_Player.EAntPlayerNumber</param>
+    /// <returns>Player</returns>
     public static Player FindByIndex(Ant_Player.EAntPlayerNumber index) {
         foreach (Player p in Player.players) {
             if (p.GetIndex() == index) {
@@ -78,8 +85,39 @@ public class Player {
         return null;
     }
 
+    /// <summary>
+    /// Find a player by its local index.
+    /// </summary>
+    /// 
+    /// <param name="index">Ant_Player.EAntLocalPlayerNumber</param>
+    /// <returns>Player</returns>
+    public static Player FindByLocalIndex(Ant_Player.EAntLocalPlayerNumber index) {
+        foreach (Player p in Player.players) {
+            if (p.GetLocalIndex() == index) {
+                return p;
+            }
+        }
+
+        return null;
+    }
+
+    /// <summary>
+    /// Find a player by an Ant_Player object.
+    /// </summary>
+    /// 
+    /// <param name="antPlayer">Ant_Player</param>
+    /// <returns>Player</returns>
     public static Player FindByAntPlayer(Ant_Player antPlayer) {
         return Player.FindByIndex(antPlayer.eAntPlayerNr);
+    }
+
+    /// <summary>
+    /// Find the main human player.
+    /// </summary>
+    /// 
+    /// <returns>Player</returns>
+    public static Player FindMainPlayer() {
+        return FindByLocalIndex(Ant_Player.EAntLocalPlayerNumber.PL_LOC_0);
     }
 
     public Player(Ant_Player unityObject) {
@@ -104,6 +142,15 @@ public class Player {
     /// <returns>Ant_Player.EAntPlayerNumber</returns>
     public Ant_Player.EAntPlayerNumber GetIndex() {
         return this.uAntPlayer.eAntPlayerNr;
+    }
+
+    /// <summary>
+    /// Get the local index of the player.
+    /// </summary>
+    /// 
+    /// <returns>Ant_Player.EAntLocalPlayerNumber</returns>
+    public Ant_Player.EAntLocalPlayerNumber GetLocalIndex() {
+        return this.uAntPlayer.eAntLocalPlayerNr;
     }
 
     /// <summary>
