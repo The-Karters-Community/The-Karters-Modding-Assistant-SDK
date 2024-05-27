@@ -273,6 +273,9 @@ public class Player {
     public Player SetCurrentHealth(int currentHealth) {
         this.uHpBarController.currentHp = currentHealth;
 
+        // This method run some processes like death if HP is below 0.
+        this.uHpBarController.CheckHp();
+
         return this;
     }
 
