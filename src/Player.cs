@@ -280,6 +280,33 @@ public class Player {
     }
 
     /// <summary>
+    /// Heal the player.
+    /// </summary>
+    /// 
+    /// <param name="health">int</param>
+    /// <param name="healExtraHealth">bool</param>
+    /// <returns>Player</returns>
+    public Player Heal(int health, bool healExtraHealth = false) {
+        this.uHpBarController.RefillHp(health, healExtraHealth);
+
+        return this;
+    }
+
+    /// <summary>
+    /// Heal the player to maximum health.
+    /// </summary>
+    /// 
+    /// <param name="healExtraHealth">bool</param>
+    /// <returns>Player</returns>
+    public Player HealToMaximum(bool healExtraHealth = false) {
+        int maxHealthTreshold = healExtraHealth
+            ? this.GetMaximumExtraHealth()
+            : this.GetMaximumHealth();
+
+        return this.Heal(maxHealthTreshold, healExtraHealth);
+    }
+
+    /// <summary>
     /// Get maximum health points.
     /// </summary>
     /// 
