@@ -1,6 +1,7 @@
 ﻿using BepInEx;
 using TheKarters2Mods;
 using TheKartersModdingAssistant.Core;
+using TheKartersModdingAssistant.EventHandler;
 
 namespace TheKartersModdingAssistant;
 
@@ -46,6 +47,11 @@ public class TheKartersModdingAssistant : AbstractPlugin {
         this.harmony.PatchAll(typeof(WeaponsController__PickupCurrentlySelectedWeapon));
         this.harmony.PatchAll(typeof(WeaponsController__Shoot));
 
+        this.harmony.PatchAll(typeof(HpBarController__RefillHp));
+        this.harmony.PatchAll(typeof(HpBarController__Hit));
+
         this.harmony.PatchAll(typeof(Ant_KartInput__ProcessRacingInput));
+
+        PlayerEventHandler.Initialize(this.logger);
     }
 }

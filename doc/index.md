@@ -165,6 +165,11 @@ Action<Player> PlayerEvent.onItemObtainAfter += (player) => {};
 Action<Player> PlayerEvent.onItemUse += (player) => {};
 Action<Player> PlayerEvent.onItemUseAfter += (player) => {};
 
+// Executed when the player has been hit by an item.
+// Injected in HpBarController::Hit.
+Action<Player> PlayerEvent.onItemHit += (player, damages, playerWhoShoot, usedItem) => {};
+Action<Player> PlayerEvent.onItemHitAfter += (player, damages, playerWhoShoot, usedItem) => {};
+
 // Executed when the player is healing.
 // Injected in HpBarController::RefillHp.
 Action<Player, int, bool> PlayerEvent.onHeal += (player, healthToHeal, healExtraHealth) => {};

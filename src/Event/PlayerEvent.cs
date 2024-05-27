@@ -57,4 +57,8 @@ public class PlayerEvent {
     // HpBarController::RefillHp
     public static Action<Player, int, bool> onHeal;
     public static Action<Player, int, bool> onHealAfter;
+
+    // HpBarController::Hit
+    public static Action<Player, int, Player, Item> onItemHit;
+    public static Action<Player, int, Player, Item> onItemHitAfter;
 }

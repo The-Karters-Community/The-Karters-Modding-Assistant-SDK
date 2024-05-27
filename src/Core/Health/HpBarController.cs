@@ -17,3 +17,20 @@ public class HpBarController__RefillHp {
         PlayerEvent.onHealAfter?.Invoke(player, hp, overdrive);
     }
 }
+
+[HarmonyPatch(typeof(HpBarController), nameof(HpBarController.Hit))]
+public class HpBarController__Hit {
+    public static void Prefix(HpBarController __instance, ref int damage, ref int playerMakingDamage, ref PixelWeaponObject.EWeaponType eWeaponType) {
+        Player player = Player.FindByAntPlayer(__instance.player);
+        Player authorPlayer = Player.FindByIndex((Ant_Player.EAntPlayerNumber)playerMakingDamage);
+
+        PlayerEvent.onItemHit?.Invoke(player, damage, authorPlayer, (Item)eWeaponType);
+    }
+
+    public static void Postfix(HpBarController __instance, int damage, int playerMakingDamage, PixelWeaponObject.EWeaponType eWeaponType) {
+        Player player = Player.FindByAntPlayer(__instance.player);
+        Player authorPlayer = Player.FindByIndex((Ant_Player.EAntPlayerNumber)playerMakingDamage);
+
+        PlayerEvent.onItemHitAfter?.Invoke(player, damage, authorPlayer, (Item)eWeaponType);
+    }
+}
