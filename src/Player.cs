@@ -387,6 +387,15 @@ public class Player {
     }
 
     /// <summary>
+    /// Tell whether the player is immune to damages.
+    /// </summary>
+    /// 
+    /// <returns>bool</returns>
+    public bool IsImmune() {
+        return this.uHpBarController.isImmune || this.uHpBarController.deathImmune;
+    }
+
+    /// <summary>
     /// Get the progress of the given boost.
     /// </summary>
     /// 
