@@ -1,4 +1,7 @@
+using System.Collections;
 using System.Collections.Generic;
+using BepInEx.Unity.IL2CPP.Utils.Collections;
+using UnityEngine;
 
 namespace TheKartersModdingAssistant;
 
@@ -18,6 +21,8 @@ public class Player {
     public AIDistToTargetBehavController uAiDistToTargetBehavController;
     public WeaponsController uWeaponsController;
     public PTK_WeaponsAndAmunitionManager uPtkWeaponsAndAmunitionManager;
+
+    // Coroutines references
 
     // CUSTOM
     protected Dictionary<string, object> custom = new();
@@ -393,6 +398,43 @@ public class Player {
     /// <returns>bool</returns>
     public bool IsImmune() {
         return this.uHpBarController.isImmune || this.uHpBarController.deathImmune;
+    }
+
+    /// <summary>
+    /// Immunize the player.
+    /// </summary>
+    /// 
+    /// <param name="timeInSeconds">float</param>
+    /// <returns>Player</returns>
+    public Player Immunize(float timeInSeconds) {
+        this.uHpBarController.ActivateImmunityNow(true);
+
+        this.uAntPlayer.StartCoroutine(this.ImmunizeProcessCoroutine(timeInSeconds).WrapToIl2Cpp());
+
+        return this;
+    }
+
+    /// <summary>
+    /// Coroutine that manages the immunize process.
+    /// </summary>
+    /// 
+    /// <param name="timeInSeconds">float</param>
+    /// <returns>IEnumerator</returns>
+    protected IEnumerator ImmunizeProcessCoroutine(float timeInSeconds) {
+        yield return new WaitForSeconds(timeInSeconds);
+
+        this.StopImmunity();
+    }
+
+    /// <summary>
+    /// Stop the immunity.
+    /// </summary>
+    /// 
+    /// <returns>Player</returns>
+    public Player StopImmunity() {
+        this.uHpBarController.ActivateImmunityNow(false);
+
+        return this;
     }
 
     /// <summary>
