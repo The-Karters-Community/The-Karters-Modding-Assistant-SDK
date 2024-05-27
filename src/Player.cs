@@ -500,6 +500,38 @@ public class Player {
     }
 
     /// <summary>
+    /// Set the current amount of reserve in percentage.
+    /// </summary>
+    /// 
+    /// <param name="reserve">float</param>
+    /// <returns>Player</returns>
+    public Player SetCurrentReserveInPercentage(float reserve) {
+        float rawReserve = 0;
+
+        float Region1Slope = 6.3445f;
+        float Region1Offset = 100.1579f;
+        float Region2Slope = 2.4499f;
+        float Region2Offset = 119.9324f;
+        float Region3Slope = 0.7406f;
+        float Region3Offset = 137.0497f;
+
+        if (reserve < 132f) {
+            // Region 1 linear relationship
+            rawReserve = (reserve - Region1Offset) / Region1Slope;
+        }
+        else if (reserve < 144.5f) {
+            // Region 2 linear relationship
+            rawReserve = (reserve - Region2Offset) / Region2Slope;
+        }
+        else {
+            // Region 3 linear relationship
+            rawReserve = (reserve - Region3Offset) / Region3Slope;
+        }
+
+        return this.SetCurrentReserve(rawReserve);
+    }
+
+    /// <summary>
     /// Get the current speed ignoring physics.
     /// </summary>
     /// 
