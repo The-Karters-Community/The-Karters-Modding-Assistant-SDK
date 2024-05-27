@@ -42,3 +42,18 @@ public class HpBarController__Hit {
         }
     }
 }
+
+[HarmonyPatch(typeof(HpBarController), nameof(HpBarController.Death))]
+public class HpBarController__Death {
+    public static void Prefix(HpBarController __instance) {
+        Player player = Player.FindByAntPlayer(__instance.player);
+
+        PlayerEvent.onDeath?.Invoke(player);
+    }
+
+    public static void Postfix(HpBarController __instance) {
+        Player player = Player.FindByAntPlayer(__instance.player);
+
+        PlayerEvent.onDeathAfter?.Invoke(player);
+    }
+}

@@ -49,6 +49,7 @@ public class TheKartersModdingAssistant : AbstractPlugin {
 
         this.harmony.PatchAll(typeof(HpBarController__RefillHp));
         this.harmony.PatchAll(typeof(HpBarController__Hit));
+        this.harmony.PatchAll(typeof(HpBarController__Death));
 
         this.harmony.PatchAll(typeof(Ant_KartInput__ProcessRacingInput));
 
