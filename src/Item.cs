@@ -18,3 +18,15 @@ public enum Item {
     POISON_GUN = PixelWeaponObject.EWeaponType.POISONGUN_14,
     NONE = PixelWeaponObject.EWeaponType.__WEAPONS_COUNT
 }
+
+public static class ItemExt {
+    /// <summary>
+    /// Convert a Item object to a EWeaponType.
+    /// </summary>
+    /// 
+    /// <param name="item">Item</param>
+    /// <returns>PixelWeaponObject.EWeaponType</returns>
+    public static PixelWeaponObject.EWeaponType ToWeaponType(Item item) {
+        return (PixelWeaponObject.EWeaponType)item;
+    }
+}

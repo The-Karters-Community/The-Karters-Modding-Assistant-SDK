@@ -273,7 +273,75 @@ public class Player {
     public Player SetCurrentHealth(int currentHealth) {
         this.uHpBarController.currentHp = currentHealth;
 
+        // This method run some processes like death if HP is below 0.
+        this.uHpBarController.CheckHp();
+
         return this;
+    }
+
+    /// <summary>
+    /// Heal the player.
+    /// </summary>
+    /// 
+    /// <param name="health">int</param>
+    /// <param name="healExtraHealth">bool</param>
+    /// <returns>Player</returns>
+    public Player Heal(int health, bool healExtraHealth = false) {
+        this.uHpBarController.RefillHp(health, healExtraHealth);
+
+        return this;
+    }
+
+    /// <summary>
+    /// Heal the player to maximum health.
+    /// </summary>
+    /// 
+    /// <param name="healExtraHealth">bool</param>
+    /// <returns>Player</returns>
+    public Player HealToMaximum(bool healExtraHealth = false) {
+        int maxHealthTreshold = healExtraHealth
+            ? this.GetMaximumExtraHealth()
+            : this.GetMaximumHealth();
+
+        return this.Heal(maxHealthTreshold, healExtraHealth);
+    }
+
+    /// <summary>
+    /// Damage the player.
+    /// </summary>
+    /// 
+    /// <param name="damages">int</param>
+    /// <param name="authorOfDamages">Player</param>
+    /// <param name="hitByItem">Item</param>
+    /// <param name="allowDeath">bool</param>
+    /// <returns></returns>
+    public Player Damage(int damages, Player authorOfDamages = null, Item hitByItem = Item.NONE, bool allowDeath = true) {
+        if (authorOfDamages is null) {
+            authorOfDamages = this;
+        }
+
+        if (!allowDeath && damages >= this.GetCurrentHealth()) {
+            damages = this.GetCurrentHealth() - 1;
+
+            if (damages <= 0) {
+                return this;
+            }
+        }
+
+        this.uHpBarController.Hit(damages, (int)authorOfDamages.GetIndex(), ItemExt.ToWeaponType(hitByItem));
+
+        return this;
+    }
+
+    /// <summary>
+    /// Damage the player to death.
+    /// </summary>
+    /// 
+    /// <param name="authorOfKill">Player</param>
+    /// <param name="killedByItem">Item</param>
+    /// <returns>Player</returns>
+    public Player Kill(Player authorOfKill = null, Item killedByItem = Item.NONE) {
+        return this.Damage(this.GetCurrentHealth(), authorOfKill, killedByItem);
     }
 
     /// <summary>
@@ -429,6 +497,38 @@ public class Player {
     /// <returns>float</returns>
     public float GetCurrentReserveInPercentage() {
         return this.uPixelKartPhysics.GetCurrentEngineSpeedPowerWithReservesPercentageInfo();
+    }
+
+    /// <summary>
+    /// Set the current amount of reserve in percentage.
+    /// </summary>
+    /// 
+    /// <param name="reserve">float</param>
+    /// <returns>Player</returns>
+    public Player SetCurrentReserveInPercentage(float reserve) {
+        float rawReserve = 0;
+
+        float Region1Slope = 6.3445f;
+        float Region1Offset = 100.1579f;
+        float Region2Slope = 2.4499f;
+        float Region2Offset = 119.9324f;
+        float Region3Slope = 0.7406f;
+        float Region3Offset = 137.0497f;
+
+        if (reserve < 132f) {
+            // Region 1 linear relationship
+            rawReserve = (reserve - Region1Offset) / Region1Slope;
+        }
+        else if (reserve < 144.5f) {
+            // Region 2 linear relationship
+            rawReserve = (reserve - Region2Offset) / Region2Slope;
+        }
+        else {
+            // Region 3 linear relationship
+            rawReserve = (reserve - Region3Offset) / Region3Slope;
+        }
+
+        return this.SetCurrentReserve(rawReserve);
     }
 
     /// <summary>

@@ -3,7 +3,7 @@
     <TargetFramework>net6.0</TargetFramework>
     <AssemblyName>TheKartersModdingAssistant</AssemblyName>
     <Description>This SDK has for purpose to speed up the mod making process.</Description>
-    <Version>0.1.3</Version>
+    <Version>0.1.4</Version>
     <Author>Arca</Author>
     <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
     <LangVersion>latest</LangVersion>

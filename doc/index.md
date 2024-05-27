@@ -165,6 +165,21 @@ Action<Player> PlayerEvent.onItemObtainAfter += (player) => {};
 Action<Player> PlayerEvent.onItemUse += (player) => {};
 Action<Player> PlayerEvent.onItemUseAfter += (player) => {};
 
+// Executed when the player has been hit by an item.
+// Injected in HpBarController::Hit.
+Action<Player> PlayerEvent.onItemHit += (player, damages, playerWhoShoot, usedItem) => {};
+Action<Player> PlayerEvent.onItemHitAfter += (player, damages, playerWhoShoot, usedItem) => {};
+
+// Executed when the player is healing.
+// Injected in HpBarController::RefillHp.
+Action<Player, int, bool> PlayerEvent.onHeal += (player, healthToHeal, healExtraHealth) => {};
+Action<Player, int, bool> PlayerEvent.onHealAfter += (player, healthToHeal, healExtraHealth) => {};
+
+// Executed when the player is killed.
+// Injected in HpBarController::Death.
+Action<Player, int, bool> PlayerEvent.onDeath += (player) => {};
+Action<Player, int, bool> PlayerEvent.onDeathAfter += (player) => {};
+
 // The following actions are input-related.
 // In order to avoid to repeat things to much, each different actions will be written once.
 // Replace XXX by one the following:
