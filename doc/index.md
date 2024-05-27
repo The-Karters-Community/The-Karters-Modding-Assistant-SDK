@@ -165,6 +165,11 @@ Action<Player> PlayerEvent.onItemObtainAfter += (player) => {};
 Action<Player> PlayerEvent.onItemUse += (player) => {};
 Action<Player> PlayerEvent.onItemUseAfter += (player) => {};
 
+// Executed when the player is healing.
+// Injected in HpBarController::RefillHp.
+Action<Player, int, bool> PlayerEvent.onHeal += (player, healthToHeal, healExtraHealth) => {};
+Action<Player, int, bool> PlayerEvent.onHealAfter += (player, healthToHeal, healExtraHealth) => {};
+
 // The following actions are input-related.
 // In order to avoid to repeat things to much, each different actions will be written once.
 // Replace XXX by one the following:

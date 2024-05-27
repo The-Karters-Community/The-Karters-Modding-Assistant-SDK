@@ -53,4 +53,8 @@ public class PlayerEvent {
     // WeaponsController::Shoot
     public static Action<Player> onItemUse;
     public static Action<Player> onItemUseAfter;
+
+    // HpBarController::RefillHp
+    public static Action<Player, int, bool> onHeal;
+    public static Action<Player, int, bool> onHealAfter;
 }
